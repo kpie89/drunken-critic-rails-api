@@ -22,9 +22,28 @@ class BeersController < ApplicationController
     render json: @breweries
   end
 
+  # GET /brewery/random
   def random_brewery
     @brewery = Beer.random_brewery
     render json: @brewery
+  end
+
+  # GET /categories
+  # GET /categories.json
+  def categories
+    @categories = Beer.categories
+    render json: @categories
+  end
+
+  #GET /styles
+  def styles
+    @styles = Beer.styles
+    render json: @styles
+  end
+
+  def hops
+    @hops = Beer.hops
+    render json: @hops
   end
 
   # # POST /beers
