@@ -21,4 +21,16 @@ class Beer
     HTTParty.get('http://api.brewerydb.com/v2/brewery/random/?key=d94be20c4ddc36bf7de6ea0b615393a1')
   end
 
+  def self.categories
+    HTTParty.get('http://api.brewerydb.com/v2/categories/?key=d94be20c4ddc36bf7de6ea0b615393a1')
+  end
+
+  def self.styles
+    HTTParty.get('http://api.brewerydb.com/v2/styles/?key=d94be20c4ddc36bf7de6ea0b615393a1')
+  end
+
+  def self.hops
+    HTTParty.get('http://api.brewerydb.com/v2/hops/?key=d94be20c4ddc36bf7de6ea0b615393a1')
+  end
+
 end
