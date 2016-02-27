@@ -1,11 +1,16 @@
 class BeersController < ApplicationController
   before_action :set_beer, only: [:show, :update, :destroy]
 
+
   # GET /beers
   # GET /beers.json
   def index
     @beers = Beer.all
     render json: @beers
+  end
+
+  def show
+    render json: @beer
   end
 
   # GET /beer/random
@@ -45,7 +50,6 @@ class BeersController < ApplicationController
     @hops = Beer.hops
     render json: @hops
   end
-
   # # POST /beers
   # # POST /beers.json
   # def create
@@ -78,11 +82,11 @@ class BeersController < ApplicationController
   #   head :no_content
   # end
   #
-  # private
-  #
-  #   def set_beer
-  #     @beer = Beer.find(params[:id])
-  #   end
+  private
+
+    def set_beer
+      @beer = Beer.find(params[:id])
+    end
   #
   #   def beer_params
   #     params.require(:beer).permit(:name,, :desc, :abv, :ibu)
