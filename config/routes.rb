@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :ratings, except: [:new, :edit]
+  resources :ratings
   resources :beers, except: [:new, :edit]
   get 'hops' => 'beers#hops'
   get '/styles' => 'beers#styles'
