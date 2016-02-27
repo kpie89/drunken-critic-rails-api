@@ -1,6 +1,6 @@
-class RatingsController < ProtectedController
+class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :update, :destroy]
-  before_filter :set_user, only: [:index, :create]
+  # before_filter :set_user, only: [:index, :create]
   # GET /ratings
   # GET /ratings.json
   def index
@@ -18,7 +18,7 @@ class RatingsController < ProtectedController
   # POST /ratings
   # POST /ratings.json
   def create
-    @rating = Rating.new(rating_params)
+    @rating = current_user.ratings.new(rating_params)
 
     if @rating.save
       render json: @rating, status: :created, location: @rating
