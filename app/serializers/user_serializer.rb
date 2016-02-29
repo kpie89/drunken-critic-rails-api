@@ -1,6 +1,7 @@
 #
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :email # , :can_edit
+  has_many :ratings
 
   # def can_edit
   #   # defaults to current user which may be nil
