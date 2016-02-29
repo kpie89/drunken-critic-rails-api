@@ -1,20 +1,21 @@
 class BeersController < ApplicationController
   before_action :set_beer, only: [:show, :update, :destroy]
 
-
+  # caches_page :index
   # GET /beers
   # GET /beers.json
-  def index
-    @beers = Beer.all
-    render json: @beers
+  def search_by_key
+    @beer = Beer.search_by_key(params[:search_key])
+
+    render json: @beer
   end
 
   def show
     render json: @beer
   end
 
-  # GET /beer/random
-  # GET /beers/random.json
+  # GET /beer/rand
+  # GET /beers/rand.json
   def random_beer
     @beer = Beer.random_beer
     render json: @beer
