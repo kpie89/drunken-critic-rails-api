@@ -36,11 +36,10 @@ module DrunkenCriticApi
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '*',
-                 headers: :any,
-                 methods: [:options, :get,
-                           :post, :patch, :delete]
+        resource '*', headers: :any, methods: [:get, :post, :patch, :put, :delete, :options]
+        # This is an excessively permissive CORS policy.
+        # In real life, you'll want to limit access much more.
       end
-    end
+    end # end of CORS configuration
   end
 end
