@@ -1,10 +1,10 @@
-class RatingsController < ApplicationController
+class RatingsController < ProtectedController
   before_action :set_rating, only: [:show, :update, :destroy]
   # before_filter :set_user, only: [:index, :create]
   # GET /ratings
   # GET /ratings.json
   def index
-    @ratings = Rating.all
+    @ratings = current_user.ratings.all
 
     render json: @ratings
   end
@@ -59,5 +59,9 @@ class RatingsController < ApplicationController
 
     def rating_params
       params.require(:rating).permit(:score, :desc, :user, :beer_id)
+    end
+
+    def set_beer
+      @beer = Beer.find(params[:id])
     end
 end
