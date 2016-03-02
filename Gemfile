@@ -4,14 +4,15 @@ ruby '2.2.4'
 gem 'rails', '~> 4.2.5'
 gem 'rails-api'
 gem 'active_model_serializers'
-gem 'rack-cors', require: 'rack/cors'
 gem 'pg'
 gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'rack-cors', :require => 'rack/cors'
 
 group :production do
-  gem 'rails_12factor', '~> 0.0.3'
+  gem 'rails_12factor'
+  gem 'puma'
 end
 
 group :development, :test do
