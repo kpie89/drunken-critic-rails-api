@@ -78,6 +78,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    puma (3.0.2)
     rack (1.6.4)
     rack-cors (0.4.0)
     rack-test (0.6.3)
@@ -166,10 +167,11 @@ DEPENDENCIES
   pry (~> 0.10)
   pry-byebug (~> 3.3.0)
   pry-rails (~> 0.3.4)
+  puma
   rack-cors
   rails (~> 4.2.5)
   rails-api
-  rails_12factor (~> 0.0.3)
+  rails_12factor
   rb-readline
   rspec (~> 3.4.0)
   rspec-rails (~> 3.4.2)
