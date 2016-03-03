@@ -1,10 +1,10 @@
 class RatingsController < ProtectedController
-  before_action :set_rating, only: [:show, :update, :destroy]
+  before_action :set_rating, only: [:update, :destroy]
   # before_filter :set_user, only: [:index, :create]
   # GET /ratings
   # GET /ratings.json
   def index
-    @ratings = current_user.ratings.all
+    @ratings = User.ratings.all
 
     render json: @ratings
   end
@@ -18,7 +18,7 @@ class RatingsController < ProtectedController
   # POST /ratings
   # POST /ratings.json
   def create
-    @rating = current_user.ratings.new(rating_params)
+    @rating = current_user.ratings.build(rating_params)
 
     if @rating.save
       render json: @rating, status: :created, location: @rating
@@ -30,7 +30,6 @@ class RatingsController < ProtectedController
   # PATCH/PUT /ratings/1
   # PATCH/PUT /ratings/1.json
   def update
-    @rating = Rating.find(params[:id])
 
     if @rating.update(rating_params)
       head :no_content
@@ -49,19 +48,12 @@ class RatingsController < ProtectedController
 
   private
 
-    def set_user
-      @article = User.find(params[:user_id])
-    end
-
     def set_rating
-      @rating = Rating.find(params[:id])
+      @rating = current_user.ratings.find(params[:id])
     end
 
     def rating_params
       params.require(:rating).permit(:score, :desc, :user, :beer_id)
     end
 
-    def set_beer
-      @beer = Beer.find(params[:id])
-    end
 end
